@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Flow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff; /* Blue */
+            --secondary-color: #28a745; /* Green */
+            --dark-bg: #212529; /* Dark Gray */
+            --light-bg: #f8f9fa; /* Light Gray */
+            --text-color: #e9ecef; /* Light Text */
+            --accent-color: #ffc107; /* Yellow */
+            --border-color: #495057; /* Medium Gray */
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #0056b3);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--secondary-color);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3.5em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* Abstract background elements for header */
+        header::before, header::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        header::before {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: -100px;
+            transform: rotate(45deg);
+        }
+
+        header::after {
+            width: 200px;
+            height: 200px;
+            bottom: -50px;
+            right: -50px;
+            transform: rotate(-30deg);
+        }
+
+        .section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .section:nth-child(even) {
+            background-color: #2c313a; /* Slightly lighter dark */
+        }
+
+        .section h2 {
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .grid-3-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: #212529;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-color);
+            transition: background 0.3s ease;
+        }
+
+        .card:hover::before {
+            background: var(--accent-color);
+        }
+
+        .card h3 {
+            color: var(--secondary-color);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card h3 i {
+            margin-right: 10px;
+            font-size: 1.2em;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            color: #ced4da;
+            font-size: 1.1em;
+        }
+
+        .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #218838; /* Darker green */
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background-color: #1a1e22;
+            color: #adb5bd;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9em;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+            .section h2 {
+                font-size: 2em;
+            }
+            .grid-3-col {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-code-branch"></i> DevOps Flow</h1>
+            <p>Streamline. Automate. Innovate. Deliver.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2>The DevOps Philosophy</h2>
+                <p>DevOps is a set of practices that combines software development (Dev) and information technology operations (Ops) to shorten the systems development life cycle and provide continuous delivery with high software quality.</p>
+                <div class="grid-3-col">
+                    <div class="card">
+                        <h3><i class="fas fa-cogs"></i> Continuous Integration</h3>
+                        <p>Automatically merge code changes, run tests, and build artifacts, ensuring code quality and early bug detection.</p>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-truck-fast"></i> Continuous Delivery</h3>
+                        <p>Automate the release process, ensuring that software can be released to production at any time with confidence.</p>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-solid fa-arrows-turn-to-dots"></i> Continuous Deployment</h3>
+                        <p>Fully automate the deployment of validated code to production environments, reducing manual errors and speeding up releases.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Our Core Principles</h2>
+                <div class="grid-3-col">
+                    <div class="card">
+                        <h3><i class="fas fa-handshake"></i> Collaboration</h3>
+                        <p>Fostering strong communication and shared responsibility between development and operations teams.</p>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-robot"></i> Automation</h3>
+                        <p>Automating repetitive tasks across the entire software delivery pipeline to increase efficiency and reduce errors.</p>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-chart-line"></i> Monitoring & Feedback</h3>
+                        <p>Continuously monitoring application performance and infrastructure health to quickly identify and resolve issues.</p>
+                    </div>
+                </div>
+                <a href="#" class="cta-button">Learn More About DevOps</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DevOps Flow. All rights reserved.</p>
+            <p>Designed with <i class="fas fa-heart" style="color: #dc3545;"></i> for seamless pipelines.</p>
+        </div>
+    </footer>
+</body>
+</html>
